@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
 class Api {
-  // path of input image.
+  // path of input
   final File inputImage;
   String base64Image;
 
@@ -21,7 +21,7 @@ class Api {
     // API url and key
     // Input your Api key
     String url = "https://vision.googleapis.com/v1/images:annotate";
-    final key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+    final key = 'Input your key';
     String url_key = url + '?key=' + key;
 
     // header

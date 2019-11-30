@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'apiVision.dart';
+import 'uploadToStorage.dart';
 
 import 'package:meta/meta.dart'; 
 import 'package:flutter/material.dart'; 
@@ -43,6 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       this.imageResult = apiResult; 
     });
+  }
+
+  Future<void> uploadImage() async {
+    print('click Upload Image to Storage!');
+    UploadToStorage uploadImage = UploadToStorage(inputImage: imageFile);
+    final result = await uploadImage.uploadImage();
+    print(result);
+    // setState(() {
+    //   this.imageResult = apiResult; 
+    // });
   }
 
   @override
@@ -88,7 +99,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       visionAPI();
                     },
                   )),
-              buildText()
+              buildText(),
+              Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: RaisedButton(
+                    child: Text('Upload Image to Storage!'),
+                    onPressed: () {
+                      uploadImage();
+                    },
+                  )),
             ],
           ),
         )
